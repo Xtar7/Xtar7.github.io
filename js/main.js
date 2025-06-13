@@ -290,28 +290,3 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
-// 简历下载，还有防抖
-let canDownload = true;
-
-function downloadResume() {
-  if (!canDownload) {
-    console.log("请稍后再下载");
-    return;
-  }
-
-  canDownload = false;
-
-  // 创建隐藏链接触发下载
-  const link = document.createElement('a');
-  link.href = 'https://cdn.jsdelivr.net/gh/Xtar7/Xtar7.github.io@main/assets/index/xin-resume.pdf';
-  link.download = '我的简历.pdf';  // 自定义下载文件名
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-
-  // 设置防抖：3 秒内只能点击一次
-  setTimeout(() => {
-    canDownload = true;
-  }, 3000);
-}
